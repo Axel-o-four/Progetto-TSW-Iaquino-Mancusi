@@ -4,64 +4,75 @@ import java.io.Serializable;
 
 public class ProductBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	int code;
-	String name;
-	String description;
-	int price;
-	int quantity;
+    private String prefissoId; 
+    private int code;          
+    private String name;       
+    private String description; 
+    private double price;      
+    private int quantity;      
 
-	public ProductBean() {
-		code = -1;
-		name = "";
-		description = "";
-		quantity = 0;
-	}
+    public ProductBean() {
+        this.prefissoId = "";
+        this.code = -1;
+        this.name = "";
+        this.description = "";
+        this.price = 0.0;
+        this.quantity = 0;
+    }
 
-	public int getCode() {
-		return code;
-	}
+    public String getPrefissoId() {
+        return prefissoId;
+    }
 
-	public void setCode(int code) {
-		this.code = code;
-	}
+    public void setPrefissoId(String prefissoId) {
+        this.prefissoId = prefissoId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public int getCode() {
+        return code;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setCode(int code) {
+        this.code = code;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getPrice() {
-		return price;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
+    public double getPrice() {
+        return price;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-	@Override
-	public String toString() {
-		return name + " (" + code + "), " + price + " " + quantity + ". " + description;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductBean [prefissoId=" + prefissoId + ", code=" + code + ", name=" + name + ", description="
+                + description + ", price=" + price + ", quantity=" + quantity + "]";
+    }
 }

@@ -14,157 +14,128 @@ import javax.sql.DataSource;
 
 public class ProductModelDS implements ProductModel {
 
-	private static DataSource ds;
+    private static DataSource ds;
 
-	static {
-		try {
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+    static {
+        try {
+            Context initCtx = new InitialContext();
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            ds = (DataSource) envCtx.lookup("jdbc/PIXEL_EMPORIUM");
+        } catch (NamingException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+    }
 
-			ds = (DataSource) envCtx.lookup("jdbc/storage");
+    private static final String TABLE_NAME = "prodotto";
 
-		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
-		}
-	}
+    @Override
+    public synchronized void doSave(ProductBean product) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
 
-	private static final String TABLE_NAME = "product";
+        String insertSQL = "INSERT INTO " + TABLE_NAME + " (PREFISSO_ID, ID, NAME, DESCRIPTION, PRICE, QUANTITY) VALUES (?, ?, ?, ?, ?, ?)";
 
-	@Override
-	public synchronized void doSave(ProductBean product) throws SQLException {
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setString(1, product.getPrefissoId());
+            preparedStatement.setInt(2, product.getCode());
+            preparedStatement.setString(3, product.getName());
+            preparedStatement.setString(4, product.getDescription());
+            preparedStatement.setDouble(5, product.getPrice());
+            preparedStatement.setInt(6, product.getQuantity());
+            preparedStatement.executeUpdate();
+            connection.commit();
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+    }
 
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+    @Override
+    public synchronized ProductBean doRetrieveByKey(int code, String prefissoId) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO " + ProductModelDS.TABLE_NAME
-				+ " (NAME, DESCRIPTION, PRICE, QUANTITY) VALUES (?, ?, ?, ?)";
+        ProductBean bean = new ProductBean();
+        String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE PREFISSO_ID = ? AND ID = ?";
 
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, product.getName());
-			preparedStatement.setString(2, product.getDescription());
-			preparedStatement.setInt(3, product.getPrice());
-			preparedStatement.setInt(4, product.getQuantity());
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, prefissoId);
+            preparedStatement.setInt(2, code);
 
-			preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.executeQuery();
 
-			connection.commit();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-	}
+            while (rs.next()) {
+                bean.setPrefissoId(rs.getString("PREFISSO_ID"));
+                bean.setCode(rs.getInt("ID"));
+                bean.setName(rs.getString("NAME"));
+                bean.setDescription(rs.getString("DESCRIPTION"));
+                bean.setPrice(rs.getDouble("PRICE"));
+                bean.setQuantity(rs.getInt("QUANTITY"));
+            }
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+        return bean;
+    }
 
-	@Override
-	public synchronized ProductBean doRetrieveByKey(int code) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+    @Override
+    public synchronized boolean doDelete(int code, String prefissoId) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
 
-		ProductBean bean = new ProductBean();
+        int result = 0;
+        String deleteSQL = "DELETE FROM " + TABLE_NAME + " WHERE PREFISSO_ID = ? AND ID = ?";
 
-		String selectSQL = "SELECT * FROM " + ProductModelDS.TABLE_NAME + " WHERE CODE = ?";
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(deleteSQL);
+            preparedStatement.setString(1, prefissoId);
+            preparedStatement.setInt(2, code);
+            result = preparedStatement.executeUpdate();
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+        return result != 0;
+    }
 
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, code);
+    @Override
+    public synchronized Collection<ProductBean> doRetrieveAll(String order) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
 
-			ResultSet rs = preparedStatement.executeQuery();
+        Collection<ProductBean> products = new LinkedList<>();
+        String selectSQL = "SELECT * FROM " + TABLE_NAME;
 
-			while (rs.next()) {
-				bean.setCode(rs.getInt("CODE"));
-				bean.setName(rs.getString("NAME"));
-				bean.setDescription(rs.getString("DESCRIPTION"));
-				bean.setPrice(rs.getInt("PRICE"));
-				bean.setQuantity(rs.getInt("QUANTITY"));
-			}
+        if (order != null && !order.equals("")) {
+            selectSQL += " ORDER BY " + order;
+        }
 
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return bean;
-	}
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
 
-	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+            ResultSet rs = preparedStatement.executeQuery();
 
-		int result = 0;
-
-		String deleteSQL = "DELETE FROM " + ProductModelDS.TABLE_NAME + " WHERE CODE = ?";
-
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
-
-			result = preparedStatement.executeUpdate();
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return (result != 0);
-	}
-
-	@Override
-	public synchronized Collection<ProductBean> doRetrieveAll(String order) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-
-		Collection<ProductBean> products = new LinkedList<ProductBean>();
-
-		String selectSQL = "SELECT * FROM " + ProductModelDS.TABLE_NAME;
-
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
-
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				ProductBean bean = new ProductBean();
-
-				bean.setCode(rs.getInt("CODE"));
-				bean.setName(rs.getString("NAME"));
-				bean.setDescription(rs.getString("DESCRIPTION"));
-				bean.setPrice(rs.getInt("PRICE"));
-				bean.setQuantity(rs.getInt("QUANTITY"));
-				products.add(bean);
-			}
-
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return products;
-	}
-
+            while (rs.next()) {
+                ProductBean bean = new ProductBean();
+                bean.setPrefissoId(rs.getString("PREFISSO_ID"));
+                bean.setCode(rs.getInt("ID"));
+                bean.setName(rs.getString("NAME"));
+                bean.setDescription(rs.getString("DESCRIPTION"));
+                bean.setPrice(rs.getDouble("PRICE"));
+                bean.setQuantity(rs.getInt("QUANTITY"));
+                products.add(bean);
+            }
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+        return products;
+    }
 }
