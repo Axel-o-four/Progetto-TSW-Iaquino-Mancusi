@@ -23,16 +23,11 @@ public class DriverManagerConnectionPool  {
 	    Connection newConnection = null;
 	    String ip = "localhost";
 	    String port = "3306";
-	    String db = "PIXEL_EMPORIUM";
+	    String db = "pixel_emporium";
 	    String username = "root";
 	    String password = "root";
 
-	    newConnection = DriverManager.getConnection(
-	        "jdbc:mysql://" + ip + ":" + port + "/" + db 
-	        + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", 
-	        username, 
-	        password
-	    );
+	    newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 
 	    newConnection.setAutoCommit(false);
 	    return newConnection;
