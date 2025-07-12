@@ -15,8 +15,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Elenco Utenti Registrati</title>
-    <link href="<%= request.getContextPath() %>/ProductStyle.css"
-          rel="stylesheet" type="text/css">
+    <!--  <link href="<%= request.getContextPath() %>/ProductStyle.css"
+          rel="stylesheet" type="text/css">-->
 </head>
 <body>
     <h2>Elenco Utenti Registrati</h2>

@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
             if (user != null && user.getPassword().equals(hashedPassword)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect(request.getContextPath() + "/userlogged/UserLogged.jsp");
+                response.sendRedirect(request.getContextPath() + "/CatalogView.jsp");
             } else {
                 request.setAttribute("message", "Username e/o password errati.");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

@@ -18,8 +18,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Ordini Amministratore</title>
-    <link href="<%= request.getContextPath() %>/ProductStyle.css"
-          rel="stylesheet" type="text/css">
+    <!-- <link href="<%= request.getContextPath() %>/ProductStyle.css" 
+          rel="stylesheet" type="text/css">-->
     <style>
       .error {
         color: #c00;

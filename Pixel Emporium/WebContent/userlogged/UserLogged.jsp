@@ -14,7 +14,6 @@
    <title>Area Utente</title>
 </head>
 <body>
-   <h1>Benvenuto, <%= user.getNome() %>!</h1>
    <p>Questa è una pagina riservata agli utenti registrati.</p>
    <a href="<%= request.getContextPath() %>/CatalogView.jsp">Torna al catalogo</a>
    <br/>

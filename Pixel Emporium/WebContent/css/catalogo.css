@@ -1,0 +1,19 @@
+#benvenuto{
+	font-family: Impact, fantasy;
+	color: White;
+	font-size: 28px;
+	padding-left: 0.5em;
+}
+
+#banner img{
+	height: 32px;
+}
+
+#banner{
+	background-color: rgba(75, 0, 130, 0.5);
+	display: flex;
+  	align-items: center;
+  	padding: 1em;
+  	border-style: hidden;
+	border-radius: 0.5em;
+}

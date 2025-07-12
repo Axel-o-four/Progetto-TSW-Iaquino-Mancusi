@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Elenco Ordini - Pixel Emporium</title>
-    <link href="ProductStyle.css" rel="stylesheet" type="text/css">
+    <!-- <link href="ProductStyle.css" rel="stylesheet" type="text/css"> -->
 </head>
 <body>
     <h2>Elenco Ordini</h2>

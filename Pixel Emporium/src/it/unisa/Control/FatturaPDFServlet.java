@@ -67,11 +67,11 @@ public class FatturaPDFServlet extends HttpServlet {
             document.open();
             
             Paragraph companyInfo = new Paragraph(
-                    "Tech Solutions S.r.l.\n" +
-                    "Via delle Innovazioni, 123\n" +
-                    "20100 Milano (MI) - Italia\n" +
+                    "Pixel Emporium S.r.l.\n" +
+                    "Via Giovanni Paolo II, 132\n" +
+                    "84084 Fisciano (SA) - Italia\n" +
                     "P.IVA: 12345678901\n" +
-                    "Tel: +39 02 1234567 – Email: info@techsolutions.it"
+                    "Tel: +39 02 1234567 – Email: info@pixelemporium.it"
             );
             document.add(companyInfo);
             
@@ -87,7 +87,6 @@ public class FatturaPDFServlet extends HttpServlet {
 			            + ", " + cliente.getCitta() 
 			            + " (" + cliente.getProv() + ") "
 			            + cliente.getCap() + "\n");
-			invoiceDetails.add("P.IVA: 98765432100\n\n");
             document.add(invoiceDetails);
             
             document.add(new Paragraph("\n"));

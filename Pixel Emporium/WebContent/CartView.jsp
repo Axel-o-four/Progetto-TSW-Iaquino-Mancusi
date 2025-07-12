@@ -29,7 +29,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Carrello - Pixel Emporium</title>
-  <link href="ProductStyle.css" rel="stylesheet" type="text/css">
+  <!-- <link href="ProductStyle.css" rel="stylesheet" type="text/css"> -->
   <style>
     input:focus { outline: 2px solid #06f; }
     .error { color: #c00; font-size: 0.9em; margin-left: 5px; }

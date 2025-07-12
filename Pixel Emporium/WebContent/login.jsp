@@ -1,31 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="Header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
    <meta charset="UTF-8">
-   <title>Login</title>
-   <style>
-     .error {
-       color: #c00;
-       font-size: 0.9em;
-       margin-left: 5px;
-     }
-     input:focus {
-       outline: 2px solid #06f;
-     }
-   </style>
+   <title>Login - Pixel Emporium</title>
+   <link href="css/login.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<div class="page">
+	<div class="header">
+		<%@ include file="Header.jsp" %>
+	</div>
+   <div class="body">
    <h1>Login</h1>
-   
    <% 
        String message = (String) request.getAttribute("message");
        if (message != null) { 
    %>
        <p style="color:red;"><%= message %></p>
    <% } %>
-   
+   <div class="form">
    <form id="loginForm" action="Login" method="post" novalidate>
        <label for="email">Email:</label>
        <input 
@@ -36,7 +30,7 @@
          required
        >
        <span class="error" id="emailError"></span><br><br>
-       
+    
        <label for="password">Password:</label>
        <input 
          type="password" 
@@ -46,14 +40,19 @@
          required
        >
        <span class="error" id="passwordError"></span><br><br>
-       
+    
        <input type="submit" value="Accedi">
    </form>
    
    <br>
-   <a href="registration.jsp">Non sei registrato? Registrati qui</a>
-   <%@ include file="Footer.jsp" %>
-
+   <a href="registration.jsp" id="registration">Non sei registrato? Registrati qui</a>
+   
+</div>
+</div>
+</div>
+<div class="footer">
+<%@ include file="Footer.jsp" %>
+</div>
    <script>
    document.addEventListener('DOMContentLoaded', function() {
      var form     = document.getElementById('loginForm');

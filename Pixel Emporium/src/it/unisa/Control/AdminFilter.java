@@ -11,8 +11,15 @@ public class AdminFilter implements Filter {
   public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
       throws IOException, ServletException {
 
-    HttpServletRequest  request  = (HttpServletRequest) req;
+	HttpServletRequest  request  = (HttpServletRequest) req;
     HttpServletResponse response = (HttpServletResponse) res;
+    
+    String uri = request.getRequestURI();
+	  if (uri.endsWith("/admin/accessDenied.jsp")) {
+	      chain.doFilter(req, res);
+	      return;
+	  }
+    
     HttpSession session = request.getSession(false);
 
     UserBean user = session!=null
@@ -20,7 +27,7 @@ public class AdminFilter implements Filter {
                   : null;
 
     if (user==null || !user.isAdmin()) {
-      response.sendRedirect(request.getContextPath() + "/accessDenied.jsp");
+      response.sendRedirect(request.getContextPath() + "/admin/accessDenied.jsp");
       return;
     }
     chain.doFilter(req, res);

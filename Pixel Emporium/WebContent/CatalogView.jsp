@@ -27,13 +27,21 @@
     }
 %>
 
+<%@ page import="it.unisa.Model.UserBean" %>
+<%
+    UserBean user = (UserBean) session.getAttribute("user");
+    if (user == null) {
+    	response.sendRedirect(request.getContextPath() + "/userlogged/invalidLogin.jsp");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Catalogo Giochi, Console e Accessori - Pixel Emporium</title>
-    <link href="ProductStyle.css" rel="stylesheet" type="text/css">
-
+    <title>Catalogo Prodotti - Pixel Emporium</title>
+    <link href="css/catalogo.css" rel="stylesheet" type="text/css">
     <style>
       .error {
         color: #c00;
@@ -60,10 +68,19 @@
 	    background: #f0f0f0;
 	}
     </style>
+    
 </head>
 <body>
+	<div id="banner">
+		<%String utente = user.getNome();
+   		if(utente==null){
+		   utente="Ospite";
+  		 }
+   		%>
+   	   	<img src="media/alienEmoji.png" alt="alienEmoji">
+    	<span id="benvenuto">Benvenuto, <i> <%= utente %></i> !</span>
+	</div>
   <h2>Catalogo Prodotti</h2>
-  
   <h3>Giochi</h3>
 
 	<input
@@ -123,7 +140,6 @@
 	    <% } %>
 	  </tbody>
 	</table>
-
   
   <h3>Console</h3>
 
@@ -189,7 +205,7 @@
 	    <% } %>
 	  </tbody>
 	</table>
-  
+
   <h3>Accessori</h3>
 
 	<input

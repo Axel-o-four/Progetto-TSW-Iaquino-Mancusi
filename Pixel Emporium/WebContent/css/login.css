@@ -1,0 +1,78 @@
+.error {
+       color: #c00;
+       font-size: 0.9em;
+       margin-left: 5px;
+     }
+     
+h1{
+	font-family: Impact, fantasy;
+	color: White;
+	text-align: center;
+	padding: 0.5em;
+	background-color: Indigo;
+	border-style: hidden;
+	border-radius: 0.2em;
+}
+
+#registration{
+	font-family: "Trebuchet MS", sans-serif;
+  	font-size: 20px;
+  	font-style: italic;
+  	color: White;
+  	display: block;
+  	margin-top: 3em;
+}
+
+form{
+    display: inline-block;
+}
+
+div.form{
+    display: block;
+    text-align: center;
+}
+
+label{
+	display: block;
+	margin-bottom: 0.5em;
+	font-family: "Trebuchet MS", sans-serif;
+  	font-size: 18px;
+  	color: White;
+}
+
+input#email, input#password{
+	background-color: BlueViolet;
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: 18px;
+	color: white;
+	padding: 0.25em;
+	margin: 0.5em;
+	border: 2px solid Indigo;
+	border-radius: 1px;
+}
+
+input:focus {
+	border: 5px solid Indigo;
+	box-shadow: 0px 0px 10px White;
+}
+
+body{
+	background-image: url("../media/wallpaper.jpg");
+	background-repeat: repeat;
+}
+
+.header{
+	float: left;
+	width: 240px;
+	padding-right: 0.5em;
+}
+
+.body{
+	margin-left: 240px;
+	padding-left: 0.5em;
+}
+
+.footer{
+	clear: both;
+	width: 100%;
+}

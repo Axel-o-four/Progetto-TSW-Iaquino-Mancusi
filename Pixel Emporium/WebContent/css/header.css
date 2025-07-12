@@ -1,0 +1,58 @@
+header h1{
+	font-family: Impact, fantasy;
+	color: AliceBlue;
+	text-align: center;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	background-color: Indigo;
+	border-style: hidden;
+	border-radius: 0.2em;
+}
+
+nav{
+	justify-content: center;
+}
+
+nav>a{
+	font-family: "Trebuchet MS", sans-serif;
+	display: block;
+	border-color: BlueViolet BlueViolet BlueViolet DeepPink;
+	border-width: 1px 1px 1px 3px;
+	border-style: solid;
+	padding-left: 5px;
+	background-color: BlueViolet;
+	border-top-right-radius: 0.2em;
+	border-bottom-right-radius: 0.2em;
+	margin-bottom: 0.2em;
+	
+}
+
+nav>a:link{
+	color: White;
+}
+il
+nav>a:hover{
+	color: DeepSkyBlue;
+	background-color: DarkSlateBlue;
+	border-color: DarkSlateBlue;
+	border-left: DeepPink 3px solid;
+}
+
+nav>a:visited{
+	color: White;
+}
+
+nav>a:visited:hover{
+	color: DeepSkyBlue;
+	background-color: DarkSlateBlue;
+	border-color: DarkSlateBlue;
+	border-left: DeepPink 3px solid;
+}
+
+nav>a:active{
+	color: White;
+}
+
+header{
+	width: 240px;
+}
