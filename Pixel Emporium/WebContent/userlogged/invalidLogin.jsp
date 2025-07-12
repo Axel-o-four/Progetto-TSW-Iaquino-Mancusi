@@ -7,6 +7,6 @@
 <body>
    <h1>Accesso Negato!</h1>
    <p>Non sei autorizzato ad accedere a questa pagina.</p>
-   <a href="login.jsp">Vai al login</a>
+   <a href="<%= request.getContextPath() %>/login.jsp">Vai al login</a>
 </body>
 </html>

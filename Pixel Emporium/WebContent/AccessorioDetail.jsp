@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="it.unisa.AccessorioBean" %>
+<%@ page import="it.unisa.Model.AccessorioBean" %>
 <%@ include file="Header.jsp" %>
 
 <%
@@ -11,6 +11,17 @@
     <meta charset="UTF-8">
     <title>Dettagli Accessorio - Pixel Emporium</title>
     <link href="ProductStyle.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .error {
+            color: #c00;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+        input:focus {
+            outline: 2px solid #06f;
+        }
+    </style>
 </head>
 <body>
     <h2>Dettagli Accessorio</h2>
@@ -33,7 +44,9 @@
             <td><%= accessorio.getName() %></td>
             <td><%= accessorio.getDescription() %></td>
             <td>
-                <img src="<%= request.getContextPath() + "/" + accessorio.getImage() %>" alt="<%= accessorio.getName() %>" style="max-height:200px; max-width:200px;">
+                <img src="<%= request.getContextPath() + "/" + accessorio.getImage() %>" 
+                     alt="<%= accessorio.getName() %>" 
+                     style="max-height:200px; max-width:200px;">
             </td>
             <td><%= accessorio.getBrand() %></td>
             <td><%= accessorio.getPrice() %>€</td>
@@ -43,16 +56,52 @@
     </table>
     
     <h3>Aggiungi al Carrello</h3>
-    <form action="AccessorioControl" method="get">
+    <form id="addToCartForm" action="AccessorioControl" method="get" novalidate>
         <input type="hidden" name="action" value="addC">
         <input type="hidden" name="id" value="<%= accessorio.getCode() %>">
-        <label for="quantity">Quantità: </label>
-        <input type="number" name="quantity" min="1" value="1" style="width:50px">
+
+        <label for="quantity">Quantità:</label>
+        <input 
+            id="quantity" 
+            name="quantity" 
+            type="number" 
+            min="1" 
+            value="1" 
+            placeholder="Inserisci numero intero positivo" 
+            style="width:50px"
+        >
+        <span id="quantityError" class="error"></span>
+
         <input type="submit" value="Aggiungi">
     </form>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("addToCartForm");
+        const quantity = document.getElementById("quantity");
+        const errorSpan = document.getElementById("quantityError");
+
+        quantity.addEventListener("input", () => {
+            errorSpan.textContent = "";
+        });
+
+        form.addEventListener("submit", function(e) {
+            const val = quantity.value.trim();
+            const re = /^[1-9]\d*$/;
+
+            if (!re.test(val)) {
+                e.preventDefault();
+                errorSpan.textContent = "Devi inserire un intero positivo.";
+                quantity.focus();
+            }
+        });
+    });
+    </script>
+
     <% } else { %>
        <p>Nessun dettaglio disponibile per questo accessorio.</p>
     <% } %>
+
     <%@ include file="Footer.jsp" %>
 </body>
 </html>

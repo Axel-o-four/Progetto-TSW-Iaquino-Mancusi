@@ -5,7 +5,7 @@
         auth="Container"
         type="javax.sql.DataSource"
         username="root"
-        password="root"
+        password="rootroot"
         driverClassName="com.mysql.cj.jdbc.Driver"
         url="jdbc:mysql://localhost:3306/pixel_emporium?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
 </Context>

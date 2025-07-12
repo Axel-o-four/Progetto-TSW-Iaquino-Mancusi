@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Pixel Emporium</display-name>
+  <display-name>Pixel_Emporium</display-name>
   <welcome-file-list>
     <welcome-file>CatalogView.jsp</welcome-file>
   </welcome-file-list>
@@ -12,11 +12,11 @@
   </resource-ref>
   <servlet>
     <servlet-name>GiocoControl</servlet-name>
-    <servlet-class>it.unisa.GiocoControl</servlet-class>
+    <servlet-class>it.unisa.Control.GiocoControl</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ConsoleControl</servlet-name>
-    <servlet-class>it.unisa.ConsoleControl</servlet-class>
+    <servlet-class>it.unisa.Control.ConsoleControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GiocoControl</servlet-name>
@@ -28,54 +28,82 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>AccessorioControl</servlet-name>
-    <servlet-class>it.unisa.AccessorioControl</servlet-class>
+    <servlet-class>it.unisa.Control.AccessorioControl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AccessorioControl</servlet-name>
     <url-pattern>/AccessorioControl</url-pattern>
   </servlet-mapping>
-	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>it.unisa.LoginServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/Login</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>RegistrationServlet</servlet-name>
-		<servlet-class>it.unisa.RegistrationServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RegistrationServlet</servlet-name>
-		<url-pattern>/Register</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>LogoutServlet</servlet-name>
-		<servlet-class>it.unisa.LogoutServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LogoutServlet</servlet-name>
-		<url-pattern>/Logout</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>UserControl</servlet-name>
-		<servlet-class>it.unisa.UserControl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>UserControl</servlet-name>
-		<url-pattern>/UserControl</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>OrdineControl</servlet-name>
-		<servlet-class>it.unisa.OrdineControl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>OrdineControl</servlet-name>
-		<url-pattern>/OrdineControl</url-pattern>
-	</servlet-mapping>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>it.unisa.Control.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegistrationServlet</servlet-name>
+    <servlet-class>it.unisa.Control.RegistrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrationServlet</servlet-name>
+    <url-pattern>/Register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>it.unisa.Control.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserControl</servlet-name>
+    <servlet-class>it.unisa.Control.UserControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserControl</servlet-name>
+    <url-pattern>/UserControl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>OrdineControl</servlet-name>
+    <servlet-class>it.unisa.Control.OrdineControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdineControl</servlet-name>
+    <url-pattern>/OrdineControl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ProfileControl</servlet-name>
+    <servlet-class>it.unisa.Control.ProfileControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileControl</servlet-name>
+    <url-pattern>/ProfileControl</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserAdminControl</servlet-name>
+    <servlet-class>it.unisa.Control.UserAdminControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserAdminControl</servlet-name>
+    <url-pattern>/admin/users</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>OrdersAdminControl</servlet-name>
+    <servlet-class>it.unisa.Control.OrdersAdminControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdersAdminControl</servlet-name>
+    <url-pattern>/admin/orders</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CartControl</servlet-name>
+    <servlet-class>it.unisa.Control.CartControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartControl</servlet-name>
+    <url-pattern>/CartControl</url-pattern>
+  </servlet-mapping>
 </web-app>
