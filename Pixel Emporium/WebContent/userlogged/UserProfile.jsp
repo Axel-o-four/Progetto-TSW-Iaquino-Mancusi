@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="it.unisa.Model.UserBean, java.util.List" %>
-<%@ include file="/Header.jsp" %>
 <%
     UserBean user = (UserBean) session.getAttribute("user");
     List<String> errorMessages = (List<String>) request.getAttribute("errorMessages");
@@ -10,21 +9,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Profilo Utente</title>
-    <link href="ProductStyle.css" rel="stylesheet" type="text/css">
-    <style>
-      .error {
-        color: #c00;
-        font-size: 0.9em;
-        margin-left: 5px;
-      }
-      input:focus, select:focus {
-        outline: 2px solid #06f;
-      }
-    </style>
+    <title>Profilo Utente - Pixel Emporium</title>
+    <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+    <link href="<%=request.getContextPath() %>/css/profilo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h2>Profilo Utente</h2>
+<div class="page">
+<div class="header">
+	<%@ include file="/Header.jsp" %>
+</div>
+<div class="body">
+    <h1>Profilo Utente</h1>
     <% if (errorMessages != null && !errorMessages.isEmpty()) { %>
       <div style="color:red;">
         <ul>
@@ -179,8 +174,6 @@
       </table>
     </form>
 
-    <%@ include file="/Footer.jsp" %>
-
     <script>
     document.addEventListener('DOMContentLoaded', function() {
       var form      = document.getElementById('profileForm');
@@ -261,5 +254,10 @@
       });
     });
     </script>
+    </div>
+    </div>
+    <div class="footer">
+        <%@ include file="/Footer.jsp" %>
+    </div>
 </body>
 </html>

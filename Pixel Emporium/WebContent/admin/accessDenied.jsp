@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Accesso Negato - Area Amministratore</title>
+    <title>Accesso Negato - Area Amministratore - Pixel Emporium</title>
     <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
 	<link href="<%= request.getContextPath() %>/css/denied.css" rel="stylesheet" type="text/css">
 </head>

@@ -17,6 +17,7 @@
 	border-radius: 0.5em;
 	width: 100%;
 	box-sizing: border-box;
+	margin-top: 1.3em;
 }
 
 body{
@@ -105,14 +106,14 @@ h3{
 }
 
 table{
-	border: 3px solid DeepPink;
+	border: 5px solid DeepPink;
 	border-collapse: collapse;
 	box-shadow: 0px 0px 15px White;
 	background-color: DarkSlateBlue;
 }
 
 table th{
-	border: 1px solid DeepPink;
+	border: 3px solid DeepPink;
 	background-color: DarkViolet;
 	font-style: italic;
 	font-weight: bold;
@@ -120,7 +121,7 @@ table th{
 }
 
 table td{
-	border: 1px solid DeepPink;
+	border: 3px solid DeepPink;
 	background-color: DarkOrchid;
 	font-weight: bold;
 	text-align: center;

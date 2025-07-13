@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*,it.unisa.Model.OrdineBean" %>
-<%@ include file="/Header.jsp" %>
 
 <%
     Collection<OrdineBean> ordini = (Collection<OrdineBean>) request.getAttribute("ordini");
@@ -11,10 +10,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Elenco Ordini - Pixel Emporium</title>
-    <!-- <link href="ProductStyle.css" rel="stylesheet" type="text/css"> -->
-</head>
+	<link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+    <link href="<%=request.getContextPath() %>/css/ordiniAdmin.css" rel="stylesheet" type="text/css"></head>
 <body>
-    <h2>Elenco Ordini</h2>
+<div class="page">
+<div class="header">
+	<%@ include file="/Header.jsp" %>
+</div>
+<div class="body">
+    <h1>Elenco Ordini</h1>
     <%
         if (ordini == null || ordini.isEmpty()) {
     %>
@@ -67,6 +71,10 @@
     <%
         }
     %>
-    <%@ include file="/Footer.jsp" %>
+    </div>
+    </div>
+    <div class="footer">
+        <%@ include file="/Footer.jsp" %>
+    </div>
 </body>
 </html>

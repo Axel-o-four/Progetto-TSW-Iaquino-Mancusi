@@ -2,7 +2,6 @@
          contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page import="java.util.*, it.unisa.Model.OrdineBean" %>
-<%@ include file="/Header.jsp" %>
 
 <%
     @SuppressWarnings("unchecked")
@@ -17,22 +16,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Ordini Amministratore</title>
-    <!-- <link href="<%= request.getContextPath() %>/ProductStyle.css" 
-          rel="stylesheet" type="text/css">-->
-    <style>
-      .error {
-        color: #c00;
-        font-size: 0.9em;
-        margin-left: 5px;
-      }
-      input:focus {
-        outline: 2px solid #06f;
-      }
-    </style>
+    <title>Ordini Amministratore - Pixel Emporium</title>
+    <link href="<%= request.getContextPath() %>/css/ordiniAdmin.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
 </head>
 <body>
-    <h2>Elenco Ordini (tutti gli utenti)</h2>
+<div class="page">
+<div class="header">
+	<%@ include file="/Header.jsp" %>
+</div>
+<div class="body">
+    <h1>Elenco Ordini (tutti gli utenti)</h1>
 
     <form id="filterOrdersForm"
           action="<%= request.getContextPath() %>/admin/orders"
@@ -102,7 +96,6 @@
         %>
     </table>
 
-    <%@ include file="/Footer.jsp" %>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -168,5 +161,10 @@
       });
     });
     </script>
+    </div>
+    </div>
+    <div class="footer">
+        <%@ include file="/Footer.jsp" %>
+    </div>
 </body>
 </html>

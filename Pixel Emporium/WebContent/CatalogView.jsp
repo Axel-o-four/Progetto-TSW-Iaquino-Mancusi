@@ -327,6 +327,16 @@
 	    input.addEventListener('input', function(e) {
 	      doSearch(e.target.value.trim().toLowerCase());
 	    });
+	    
+	 // intercetta Invio per filtrare la tabella
+	    input.addEventListener('keydown', function(e) {
+	      if (e.key === 'Enter') {
+	        e.preventDefault();                             // evita che il form venga inviato
+	        var term = input.value.trim().toLowerCase();
+	        suggBox.innerHTML = '';                          // nasconde i suggerimenti
+	        filterTable(term);                               // esegue il filtro
+	      }
+	    });
 	
 	    suggBox.addEventListener('click', function(e) {
 	      var name = e.target.getAttribute('data-name');

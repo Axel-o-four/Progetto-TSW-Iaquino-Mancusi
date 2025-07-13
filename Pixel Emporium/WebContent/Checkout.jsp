@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ page import="it.unisa.Model.Cart,it.unisa.Model.UserBean" %>
-<%@ include file="Header.jsp" %>
 
 <%
     Cart cart = (Cart) session.getAttribute("cart");
@@ -24,23 +23,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Checkout - Pixel Emporium</title>
-  <link rel="stylesheet" href="ProductStyle.css">
-  <style>
-    .error {
-      color: #c00;
-      font-size: 0.9em;
-      margin-left: 5px;
-    }
-    input:focus, select:focus {
-      outline: 2px solid #06f;
-    }
-    #cardDetails, #paypalDetails {
-      margin-top: 10px;
-    }
-  </style>
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+  <link href="css/checkout.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-  <h2>Checkout</h2>
+<div class="page">
+<div class="header">
+	<%@ include file="Header.jsp" %>
+</div>
+<div class="body">
+  <h1>Checkout</h1>
 
   <h3>Riepilogo Carrello</h3>
   <p>Totale articoli: <strong><%= totalQuantity %></strong></p>
@@ -112,7 +104,6 @@
     <input type="submit" value="Conferma Acquisto">
   </form>
 
-  <%@ include file="Footer.jsp" %>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -259,5 +250,10 @@
       });
     });
   </script>
+  </div>
+  </div>
+  <div class="footer">
+  	  <%@ include file="Footer.jsp" %>
+  </div>
 </body>
 </html>

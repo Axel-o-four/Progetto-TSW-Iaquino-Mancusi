@@ -1,8 +1,3 @@
-body{
-	background-image: url("../media/wallpaper.jpg");
-	background-repeat: repeat;
-}
-
 h1{
 	font-family: Impact, fantasy;
 	color: White;
@@ -11,6 +6,46 @@ h1{
 	background-color: rgba(75, 0, 130, 0.5);;
 	border-style: hidden;
 	border-radius: 0.2em;
+}
+
+form{
+    display: inline-block;
+}
+
+div.form{
+    display: block;
+    text-align: center;
+}
+
+label{
+	display: block;
+	margin-bottom: 0.5em;
+	font-family: "Trebuchet MS", sans-serif;
+  	font-size: 18px;
+  	color: White;
+}
+
+input{
+	background-color: BlueViolet;
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: 18px;
+	color: white;
+	padding: 0.25em;
+	margin: 0.5em;
+	border: 2px solid Indigo;
+	border-radius: 1px;
+}
+
+input:focus {
+	border: 5px solid Indigo;
+	box-shadow: 0px 0px 10px White;
+}
+
+body{
+	background-image: url("../media/wallpaper.jpg");
+	background-repeat: repeat;
+	color: White;
+	font-family: "Trebuchet MS", sans-serif;
 }
 
 .page {
@@ -53,7 +88,6 @@ h1{
 	flex-direction: column;
 	align-items: center;
 	font-family: "Trebuchet MS", sans-serif;
-	color: White;
 }
 
 .body h1 {
@@ -61,33 +95,13 @@ h1{
   text-align: center;
 }
 
+.body .form {
+  width: 300px;
+  margin-top: 2em;
+  text-align: center;
+}
+
 .footer{
 	clear: both;
 	width: 100%;
-}
-
-table{
-	border: 5px solid DeepPink;
-	border-collapse: collapse;
-	box-shadow: 0px 0px 15px White;
-	background-color: DarkSlateBlue;
-}
-
-table th{
-	border: 3px solid DeepPink;
-	background-color: DarkViolet;
-	font-style: italic;
-	font-weight: bold;
-	text-align: center;
-}
-
-table td{
-	border: 3px solid DeepPink;
-	background-color: DarkOrchid;
-	font-weight: bold;
-	text-align: center;
-}
-
-table td>a:active, table td>a:visited, table td>a:link{
-	color: White;
 }
