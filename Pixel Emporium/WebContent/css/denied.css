@@ -1,0 +1,77 @@
+body{
+	background-image: url("../media/wallpaper.jpg");
+	background-repeat: repeat;
+}
+
+h1{
+	font-family: Impact, fantasy;
+	color: White;
+	text-align: center;
+	padding: 0.5em;
+	background-color: rgba(75, 0, 130, 0.5);;
+	border-style: hidden;
+	border-radius: 0.2em;
+}
+
+p{
+	color: Red;
+	font-size: 24px;
+	font-style: italic;
+}
+
+.page {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 1em;
+	flex-wrap: wrap;
+}
+
+@media(max-width: 600px){
+	.page {
+    	flex-direction: column;
+    	align-items: stretch;
+  	}
+
+  	.header{
+    	width: 100%;
+    	text-align: left;
+  	}
+  	
+  	.body {
+    	width: 100%;
+    	text-align: center;
+  	}
+
+  	.body .form {
+    	width: 100%;
+    	margin: 0 auto;
+  	}
+}
+
+.header{
+	margin-right: 1em;
+}
+
+.body{
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "Trebuchet MS", sans-serif;
+	color: White;
+}
+
+.body h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.footer{
+	clear: both;
+	width: 100%;
+}
+
+a:active, a:visited, a:link{
+	color: White;
+}

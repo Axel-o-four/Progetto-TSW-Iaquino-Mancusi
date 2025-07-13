@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="it.unisa.Model.GiocoBean" %>
-<%@ include file="/Header.jsp" %>
 <%
   GiocoBean gioco     = (GiocoBean) request.getAttribute("gioco");
   boolean  isEdit     = gioco != null;
@@ -10,15 +9,17 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link href="<%= request.getContextPath() %>/css/form.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
   <title><%= isEdit ? "Modifica Videogioco" : "Inserisci Videogioco" %></title>
-  <link href="<%= request.getContextPath() %>/ProductStyle.css" rel="stylesheet"/>
-  <style>
-    .error { color: #c00; font-size: 0.9em; margin-left: 5px; }
-    input:focus, textarea:focus, select:focus { outline: 2px solid #06f; }
-  </style>
 </head>
 <body>
-  <h2><%= isEdit ? "Modifica Videogioco" : "Inserisci Videogioco" %></h2>
+<div class="page">
+<div class="header">
+	<%@ include file="/Header.jsp" %>
+</div>
+<div class="body">
+  <h1><%= isEdit ? "Modifica Videogioco" : "Inserisci Videogioco" %></h1>
   
   <form id="giocoForm"
         action="<%= request.getContextPath() %>/GiocoControl"
@@ -152,7 +153,6 @@
     <input type="submit" value="<%= isEdit ? "Aggiorna" : "Inserisci" %>"/>
   </form>
 
-  <%@ include file="/Footer.jsp" %>
 
   <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -239,5 +239,11 @@
     });
   });
   </script>
+  </div>
+  </div>
+  <div class="footer">
+  	  <%@ include file="/Footer.jsp" %>
+  	
+  </div>
 </body>
 </html>

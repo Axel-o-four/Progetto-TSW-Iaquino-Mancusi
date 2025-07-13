@@ -8,7 +8,6 @@
                    it.unisa.Model.GiocoModelDS,
                    it.unisa.Model.ConsoleModelDS,
                    it.unisa.Model.AccessorioModelDS" %>
-<%@ include file="/Header.jsp" %>
 
 <%
   Collection<GiocoBean> giochi = (Collection<GiocoBean>) request.getAttribute("giochi");
@@ -27,19 +26,18 @@
       request.setAttribute("accessori", accessori);
   }
 %>
-
-<h2>Gestione Catalogo</h2>
-
-<style>
-  .error {
-    color: #c00;
-    font-size: 0.9em;
-    margin-left: 5px;
-  }
-  input:focus, textarea:focus, select:focus {
-    outline: 2px solid #06f;
-  }
-</style>
+<head>
+	<title>Gestione Catalogo - Pixel Emporium</title>
+  	<link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+	<link href="<%= request.getContextPath() %>/css/gestcat.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="page">
+		<div class="header">
+			<%@ include file="/Header.jsp" %>
+		</div>
+		<div class="body">
+<h1>Gestione Catalogo</h1>
 
 <h3>1. Inserisci Videogioco</h3>
 <form id="insertGameForm"
@@ -311,8 +309,12 @@
     }
   %>
 </table>
-
-<%@ include file="/Footer.jsp" %>
+</div>
+</div>
+</body>
+<div class="footer">
+	<%@ include file="/Footer.jsp" %>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

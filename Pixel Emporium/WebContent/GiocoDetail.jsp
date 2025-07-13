@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="it.unisa.Model.GiocoBean" %>
-<%@ include file="Header.jsp" %>
 
 <%
     GiocoBean gioco = (GiocoBean) request.getAttribute("gioco");
@@ -10,20 +9,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Dettagli Videogioco - Pixel Emporium</title>
-    <link href="ProductStyle.css" rel="stylesheet" type="text/css">
-    <style>
-      .error {
-        color: #c00;
-        font-size: 0.9em;
-        margin-left: 5px;
-      }
-      input:focus {
-        outline: 2px solid #06f;
-      }
-    </style>
+    <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+    <link href="css/dettagli.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h2>Dettagli Videogioco</h2>
+<div class="page">
+<div class="header">
+	<%@ include file="Header.jsp" %>
+</div>
+<div class="body">
+    <h1>Dettagli Videogioco</h1>
     <% if (gioco != null) { %>
     <table border="1">
         <tr>
@@ -83,7 +78,6 @@
        <p>Nessun dettaglio disponibile per questo videogioco.</p>
     <% } %>
     
-    <%@ include file="Footer.jsp" %>
 
     <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -106,5 +100,10 @@
         });
       });
     </script>
+</div>
+</div>
+<div class=footer">
+    <%@ include file="Footer.jsp" %>
+</div>
 </body>
 </html>

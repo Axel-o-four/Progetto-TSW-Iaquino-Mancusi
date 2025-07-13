@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <title>Login - Pixel Emporium</title>
-   <link rel="icon" type="image/png" href="../media/icon.png">
+   <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
    <link href="css/login.css" type="text/css" rel="stylesheet">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -19,7 +19,7 @@
        String message = (String) request.getAttribute("message");
        if (message != null) { 
    %>
-       <p style="color:red;"><%= message %></p>
+       <p style="color: Crimson; font-size:1.5em;"><%= message %></p>
    <% } %>
    <div class="form">
    <form id="loginForm" action="Login" method="post" novalidate>

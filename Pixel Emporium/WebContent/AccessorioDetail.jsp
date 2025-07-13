@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="it.unisa.Model.AccessorioBean" %>
-<%@ include file="Header.jsp" %>
+
 
 <%
     AccessorioBean accessorio = (AccessorioBean) request.getAttribute("accessorio");
@@ -10,20 +10,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Dettagli Accessorio - Pixel Emporium</title>
-    <link href="ProductStyle.css" rel="stylesheet" type="text/css">
-
-    <style>
-        .error {
-            color: #c00;
-            font-size: 0.9em;
-            margin-left: 5px;
-        }
-        input:focus {
-            outline: 2px solid #06f;
-        }
-    </style>
+    <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+    <link href="css/dettagli.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="page">
+<div class="header">
+	<%@ include file="Header.jsp" %>
+</div>
+<div class="body">
     <h2>Dettagli Accessorio</h2>
     <% if (accessorio != null) { %>
     <table border="1">
@@ -101,7 +96,10 @@
     <% } else { %>
        <p>Nessun dettaglio disponibile per questo accessorio.</p>
     <% } %>
-
+</div>
+</div>
+<div class="footer">
     <%@ include file="Footer.jsp" %>
+</div>
 </body>
 </html>

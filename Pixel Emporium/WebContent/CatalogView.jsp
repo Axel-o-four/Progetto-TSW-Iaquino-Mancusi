@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*,it.unisa.Model.GiocoBean,it.unisa.Model.ConsoleBean,it.unisa.Model.AccessorioBean,it.unisa.Model.Cart, it.unisa.Model.UserBean" %>
-<%@ include file="Header.jsp" %>
 
 <%
     Collection<?> giochi    = (Collection<?>) request.getAttribute("giochi");
@@ -40,41 +39,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Catalogo Prodotti - Pixel Emporium</title>
+    <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
     <link href="css/catalogo.css" rel="stylesheet" type="text/css">
-    <style>
-      .error {
-        color: #c00;
-        font-size: 0.9em;
-        margin-left: 5px;
-      }
-      input:focus {
-        outline: 2px solid #06f;
-      }
-      .suggestions {
-		position: absolute;
-		background: #fff;
-		border: 1px solid #ccc;
-		max-height: 200px;
-		overflow-y: auto;
-		width: 300px;
-		z-index: 100;
-		}
-	  .suggestions div {
-		padding: 6px 10px;
-		cursor: pointer;
-	  }
-	  .suggestions div:hover {
-	    background: #f0f0f0;
-	}
-    </style>
-    
 </head>
 <body>
+<div class="page">
+	<div class="header">
+		<%@ include file="Header.jsp" %>
+	</div>
+	<div class="body">
 	<div id="banner">
 	    <img src="media/alienEmoji.png" alt="alienEmoji">
 	    <span id="benvenuto">Benvenuto, <i><%= utente %></i> !</span>
 	</div>
   <h2>Catalogo Prodotti</h2>
+  <div class="colonnaCatalogo">
   <h3>Giochi</h3>
 
 	<input
@@ -88,7 +67,7 @@
 	<table border="1">
 	  <thead>
 	    <tr>
-	      <th>Immagine</th>
+	      <th>Oggetto</th>
 	      <th>Descrizione</th>
 	      <th>Prezzo</th>
 	      <th>Quantità da aggiungere</th>
@@ -100,6 +79,7 @@
 	         GiocoBean gioco = (GiocoBean) obj; %>
 	      <tr>
 	        <td>
+	        <p><%=gioco.getName() %></p>
 	          <img
 	            src="<%= gioco.getImage() %>"
 	            alt="<%= gioco.getName() %>"
@@ -134,7 +114,8 @@
 	    <% } %>
 	  </tbody>
 	</table>
-  
+  </div>
+  <div class="colonnaCatalogo">
   <h3>Console</h3>
 
 	<input
@@ -148,7 +129,7 @@
 	<table border="1">
 	  <thead>
 	    <tr>
-	      <th>Immagine</th>
+	      <th>Oggetto</th>
 	      <th>Descrizione</th>
 	      <th>Prezzo</th>
 	      <th>Quantità da aggiungere</th>
@@ -160,6 +141,7 @@
 	         ConsoleBean console = (ConsoleBean) obj; %>
 	      <tr>
 	        <td>
+	        <p><%=console.getName() %></p>
 	          <img
 	            src="<%= console.getImage() %>"
 	            alt="<%= console.getName() %>"
@@ -199,7 +181,8 @@
 	    <% } %>
 	  </tbody>
 	</table>
-
+	</div>
+  	<div class="colonnaCatalogo">
   <h3>Accessori</h3>
 
 	<input
@@ -213,7 +196,7 @@
 	<table border="1">
 	  <thead>
 	    <tr>
-	      <th>Immagine</th>
+	      <th>Oggetto</th>
 	      <th>Descrizione</th>
 	      <th>Prezzo</th>
 	      <th>Quantità da aggiungere</th>
@@ -225,6 +208,7 @@
 	         AccessorioBean accessorio = (AccessorioBean) obj; %>
 	      <tr>
 	        <td>
+	        	<p><%= accessorio.getName() %></p>
 	          <img
 	            src="<%= accessorio.getImage() %>"
 	            alt="<%= accessorio.getName() %>"
@@ -264,7 +248,12 @@
 	    <% } %>
 	  </tbody>
 	</table>
-	
+	</div>
+	</div>
+</div>
+<div class="footer">
+<%@ include file="Footer.jsp" %>
+</div>
 	<script>	
 	  document.addEventListener('DOMContentLoaded', function() {
 	    var forms = document.querySelectorAll('.add-form');
@@ -385,8 +374,6 @@
 	    });
 	  });
 	</script>
-
-  <%@ include file="Footer.jsp" %>
 
 </body>
 </html>

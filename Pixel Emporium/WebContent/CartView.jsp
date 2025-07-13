@@ -13,7 +13,6 @@
            it.unisa.Model.ConsoleBean,
            it.unisa.Model.AccessorioBean
          " %>
-<%@ include file="Header.jsp" %>
 
 <%
     Cart cart = (Cart) session.getAttribute("cart");
@@ -29,15 +28,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Carrello - Pixel Emporium</title>
-  <!-- <link href="ProductStyle.css" rel="stylesheet" type="text/css"> -->
-  <style>
-    input:focus { outline: 2px solid #06f; }
-    .error { color: #c00; font-size: 0.9em; margin-left: 5px; }
-    .focused { background: #eef; }
-  </style>
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+  <link href="css/carrello.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <h2>Carrello</h2>
+<div class="page">
+	<div class="header">
+		<%@ include file="Header.jsp" %>
+	</div>
+	<div class="body">
+  <h1>Carrello</h1>
 
   <% String cartError = (String) session.getAttribute("cartError");
      if (cartError != null) { %>
@@ -114,8 +114,11 @@
     </form>
 
   <% } %>
-
+  </div>
+</div>
+<div class="footer">
   <%@ include file="Footer.jsp" %>
+  </div>
 
   <script>
     document.querySelectorAll('.qty-form').forEach(form => {

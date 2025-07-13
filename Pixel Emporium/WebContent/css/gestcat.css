@@ -8,13 +8,9 @@ h1{
 	border-radius: 0.2em;
 }
 
-#registration{
-	font-family: "Trebuchet MS", sans-serif;
-  	font-size: 20px;
-  	font-style: italic;
-  	color: White;
-  	display: block;
-  	margin-top: 3em;
+body{
+	background-image: url("/Pixel_Emporium/WebContent/media/wallpaper.jpg");
+	background-repeat: repeat;
 }
 
 form{
@@ -34,7 +30,7 @@ label{
   	color: White;
 }
 
-input#email, input#password{
+input{
 	background-color: BlueViolet;
 	font-family: "Trebuchet MS", sans-serif;
 	font-size: 18px;
@@ -111,4 +107,38 @@ body{
 .footer{
 	clear: both;
 	width: 100%;
+}
+
+table{
+	border: 3px solid DeepPink;
+	border-collapse: collapse;
+	box-shadow: 0px 0px 15px White;
+	background-color: DarkSlateBlue;
+}
+
+table th{
+	color: White;
+	border: 1px solid DeepPink;
+	background-color: DarkViolet;
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+}
+
+table td{
+	color: White;
+	border: 1px solid DeepPink;
+	background-color: DarkOrchid;
+	font-weight: bold;
+	text-align: center;
+}
+
+table td>a:active, table td>a:visited, table td>a:link{
+	color: White;
+}
+
+h3{
+	font-style: italic;
+	font-weight: bold;
+	color: White;
 }

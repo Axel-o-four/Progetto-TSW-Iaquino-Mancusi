@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page import="it.unisa.Model.ConsoleBean" %>
-<%@ include file="/Header.jsp" %>
 <%
   ConsoleBean c      = (ConsoleBean) request.getAttribute("console");
   boolean   isEdit   = (c != null);
@@ -12,20 +11,16 @@
 <head>
   <meta charset="UTF-8">
   <title><%= isEdit ? "Modifica Console" : "Inserisci Console" %></title>
-  <link href="<%= request.getContextPath() %>/ProductStyle.css" rel="stylesheet"/>
-  <style>
-    .error {
-      color: #c00;
-      font-size: 0.9em;
-      margin-left: 5px;
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: 2px solid #06f;
-    }
-  </style>
+  <link href="<%= request.getContextPath() %>/css/form.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
 </head>
 <body>
-  <h2><%= isEdit ? "Modifica Console" : "Inserisci Console" %></h2>
+<div class="page">
+<div class="header">
+	<%@ include file="/Header.jsp" %>
+</div>
+<div class="body">
+  <h1><%= isEdit ? "Modifica Console" : "Inserisci Console" %></h1>
   <form id="consoleForm"
         action="<%= request.getContextPath() %>/ConsoleControl"
         method="post"
@@ -147,7 +142,6 @@
     <input type="submit" value="<%= isEdit ? "Aggiorna" : "Inserisci" %>"/>
   </form>
 
-  <%@ include file="/Footer.jsp" %>
 
   <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -241,6 +235,11 @@
     });
   });
   </script>
+  </div>
+  </div>
+  <div class="footer">
+  	  <%@ include file="/Footer.jsp" %>
+  </div>
 </body>
 </html>
 

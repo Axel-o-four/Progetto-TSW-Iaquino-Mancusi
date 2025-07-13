@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page import="it.unisa.Model.AccessorioBean" %>
-<%@ include file="/Header.jsp" %>
 <%
   AccessorioBean a     = (AccessorioBean) request.getAttribute("accessorio");
   boolean        edit  = (a != null);
@@ -11,20 +10,16 @@
 <head>
   <meta charset="UTF-8">
   <title><%= edit ? "Modifica Accessorio" : "Inserisci Accessorio" %></title>
-  <link href="<%= request.getContextPath() %>/ProductStyle.css" rel="stylesheet"/>
-  <style>
-    .error {
-      color: #c00;
-      font-size: 0.9em;
-      margin-left: 5px;
-    }
-    input:focus, textarea:focus {
-      outline: 2px solid #06f;
-    }
-  </style>
+  <link href="<%= request.getContextPath() %>/css/form.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
 </head>
 <body>
-  <h2><%= edit ? "Modifica Accessorio" : "Inserisci Accessorio" %></h2>
+<div class="page">
+<div class="header">
+	<%@ include file="/Header.jsp" %>
+</div>
+<div class="body">
+  <h1><%= edit ? "Modifica Accessorio" : "Inserisci Accessorio" %></h1>
   <form id="accessorioForm"
         action="<%= request.getContextPath() %>/AccessorioControl"
         method="post"
@@ -110,7 +105,6 @@
     <input type="submit" value="<%= edit ? "Aggiorna" : "Inserisci" %>"/>
   </form>
 
-  <%@ include file="/Footer.jsp" %>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -177,5 +171,10 @@
       });
     });
   </script>
+  </div>
+  </div>
+  <div class="footer">
+  	  <%@ include file="/Footer.jsp" %>
+  </div>
 </body>
 </html>

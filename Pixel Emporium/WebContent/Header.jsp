@@ -1,6 +1,6 @@
 <%@ page import="it.unisa.Model.UserBean" %>
 <header>
-<link href="css/header.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/header.css" rel="stylesheet" type="text/css">
 	<span>
 		<h1>Pixel Emporium</h1>
 	</span>

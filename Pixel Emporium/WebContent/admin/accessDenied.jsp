@@ -1,23 +1,30 @@
 <%@ page language="java"
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<%@ include file="/Header.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Accesso Negato - Area Amministratore</title>
-    <link href="<%= request.getContextPath() %>/ProductStyle.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/media/icon.png">
+	<link href="<%= request.getContextPath() %>/css/denied.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h2>Accesso Negato</h2>
+<div class="page">
+<div class="header">
+	<%@ include file="/Header.jsp" %>
+</div>
+<div class="body">
+    <h1>Accesso Negato</h1>
     <p>Non hai i permessi necessari per visualizzare questa pagina.</p>
-    <p>
         <a href="<%= request.getContextPath() %>/CatalogView.jsp">Torna al catalogo</a>
-        &nbsp;|&nbsp;
-    </p>
+    </div>
+    </div>
+    <div class="footer">
+    <%@ include file="/Footer.jsp" %>
+    
+    </div>
 </body>
 </html>
 
-<%@ include file="/Footer.jsp" %>

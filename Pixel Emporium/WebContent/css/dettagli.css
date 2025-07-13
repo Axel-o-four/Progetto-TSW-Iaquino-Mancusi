@@ -1,27 +1,16 @@
-#benvenuto{
-	font-family: Impact, fantasy;
-	color: White;
-	font-size: 28px;
-	padding-left: 0.5em;
-}
-
-#banner img{
-	height: 32px;
-}
-
-#banner{
-	background-color: rgba(75, 0, 130, 0.5);
-  	align-items: center;
-  	padding: 1em;
-  	border-style: hidden;
-	border-radius: 0.5em;
-	width: 100%;
-	box-sizing: border-box;
-}
-
 body{
 	background-image: url("../media/wallpaper.jpg");
 	background-repeat: repeat;
+}
+
+h1{
+	font-family: Impact, fantasy;
+	color: White;
+	text-align: center;
+	padding: 0.5em;
+	background-color: rgba(75, 0, 130, 0.5);;
+	border-style: hidden;
+	border-radius: 0.2em;
 }
 
 .page {
@@ -77,42 +66,15 @@ body{
 	width: 100%;
 }
 
-.colonnaCatalogo{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-input{
-	background-color: BlueViolet;
-	font-family: "Trebuchet MS", sans-serif;
-	font-size: 18px;
-	color: white;
-	padding: 0.25em;
-	margin-bottom: 0.5em;
-	border: 2px solid Indigo;
-	border-radius: 1px;
-}
-
-input:focus {
-	border: 5px solid Indigo;
-	box-shadow: 0px 0px 10px White;
-}
-
-h3{
-	font-style: italic;
-	font-weight: bold;
-}
-
 table{
-	border: 3px solid DeepPink;
+	border: 5px solid DeepPink;
 	border-collapse: collapse;
 	box-shadow: 0px 0px 15px White;
 	background-color: DarkSlateBlue;
 }
 
 table th{
-	border: 1px solid DeepPink;
+	border: 3px solid DeepPink;
 	background-color: DarkViolet;
 	font-style: italic;
 	font-weight: bold;
@@ -120,12 +82,8 @@ table th{
 }
 
 table td{
-	border: 1px solid DeepPink;
+	border: 3px solid DeepPink;
 	background-color: DarkOrchid;
 	font-weight: bold;
 	text-align: center;
-}
-
-table td>a:active, table td>a:visited, table td>a:link{
-	color: White;
 }

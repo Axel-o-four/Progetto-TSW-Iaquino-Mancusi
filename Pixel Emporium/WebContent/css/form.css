@@ -1,20 +1,6 @@
-h1{
-	font-family: Impact, fantasy;
-	color: White;
-	text-align: center;
-	padding: 0.5em;
-	background-color: rgba(75, 0, 130, 0.5);;
-	border-style: hidden;
-	border-radius: 0.2em;
-}
-
-#registration{
-	font-family: "Trebuchet MS", sans-serif;
-  	font-size: 20px;
-  	font-style: italic;
-  	color: White;
-  	display: block;
-  	margin-top: 3em;
+body{
+	background-image: url("../media/wallpaper.jpg");
+	background-repeat: repeat;
 }
 
 form{
@@ -34,7 +20,7 @@ label{
   	color: White;
 }
 
-input#email, input#password{
+input{
 	background-color: BlueViolet;
 	font-family: "Trebuchet MS", sans-serif;
 	font-size: 18px;
@@ -50,9 +36,14 @@ input:focus {
 	box-shadow: 0px 0px 10px White;
 }
 
-body{
-	background-image: url("../media/wallpaper.jpg");
-	background-repeat: repeat;
+h1{
+	font-family: Impact, fantasy;
+	color: White;
+	text-align: center;
+	padding: 0.5em;
+	background-color: rgba(75, 0, 130, 0.5);;
+	border-style: hidden;
+	border-radius: 0.2em;
 }
 
 .page {
