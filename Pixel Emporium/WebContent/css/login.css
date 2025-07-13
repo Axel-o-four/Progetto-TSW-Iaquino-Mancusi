@@ -1,8 +1,8 @@
 .error {
-       color: #c00;
-       font-size: 0.9em;
-       margin-left: 5px;
-     }
+	color: Crimson;
+	font-size: 1.5em;
+	margin-left: 5px;
+}
      
 h1{
 	font-family: Impact, fantasy;
@@ -61,15 +61,57 @@ body{
 	background-repeat: repeat;
 }
 
+.page {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 1em;
+	flex-wrap: wrap;
+}
+
+@media(max-width: 600px){
+	.page {
+    	flex-direction: column;
+    	align-items: stretch;
+  	}
+
+  	.header{
+    	width: 100%;
+    	text-align: left;
+  	}
+  	
+  	.body {
+    	width: 100%;
+    	text-align: center;
+  	}
+
+  	.body .form {
+    	width: 100%;
+    	margin: 0 auto;
+  	}
+}
+
 .header{
-	float: left;
-	width: 240px;
-	padding-right: 0.5em;
+	margin-right: 1em;
 }
 
 .body{
-	margin-left: 240px;
-	padding-left: 0.5em;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "Trebuchet MS", sans-serif;
+}
+
+.body h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.body .form {
+  width: 300px;
+  margin-top: 2em;
+  text-align: center;
 }
 
 .footer{

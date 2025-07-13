@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*,it.unisa.Model.GiocoBean,it.unisa.Model.ConsoleBean,it.unisa.Model.AccessorioBean,it.unisa.Model.Cart" %>
+<%@ page import="java.util.*,it.unisa.Model.GiocoBean,it.unisa.Model.ConsoleBean,it.unisa.Model.AccessorioBean,it.unisa.Model.Cart, it.unisa.Model.UserBean" %>
 <%@ include file="Header.jsp" %>
 
 <%
@@ -27,13 +27,12 @@
     }
 %>
 
-<%@ page import="it.unisa.Model.UserBean" %>
 <%
-    UserBean user = (UserBean) session.getAttribute("user");
-    if (user == null) {
-    	response.sendRedirect(request.getContextPath() + "/userlogged/invalidLogin.jsp");
-        return;
-    }
+	UserBean user = (UserBean) session.getAttribute("user");
+	String utente = "Ospite";
+	if (user != null && user.getNome() != null) {
+	    utente = user.getNome();
+	}
 %>
 
 <!DOCTYPE html>
@@ -72,13 +71,8 @@
 </head>
 <body>
 	<div id="banner">
-		<%String utente = user.getNome();
-   		if(utente==null){
-		   utente="Ospite";
-  		 }
-   		%>
-   	   	<img src="media/alienEmoji.png" alt="alienEmoji">
-    	<span id="benvenuto">Benvenuto, <i> <%= utente %></i> !</span>
+	    <img src="media/alienEmoji.png" alt="alienEmoji">
+	    <span id="benvenuto">Benvenuto, <i><%= utente %></i> !</span>
 	</div>
   <h2>Catalogo Prodotti</h2>
   <h3>Giochi</h3>
