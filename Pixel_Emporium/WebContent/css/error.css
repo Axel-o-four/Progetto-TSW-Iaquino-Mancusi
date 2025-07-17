@@ -1,0 +1,27 @@
+body{
+	background-image: url("../media/wallpaper.jpg");
+	background-repeat: repeat;
+	color: White;
+	font-family: "Trebuchet MS", sans-serif;
+	display: flex;
+	justify-content: center;
+}
+
+.container{
+	display: inline-block;
+	text-align: center;
+	}
+
+h1{
+	font-family: Impact, fantasy;
+	color: Crimson;
+	box-shadow: 0px 0px 10px White;
+	padding: 0.5em;
+	background-color: rgba(75, 0, 130, 0.5);
+	border-style: hidden;
+	border-radius: 0.2em;
+}
+
+a{
+	color: White;
+}
