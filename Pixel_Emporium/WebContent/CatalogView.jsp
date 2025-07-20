@@ -87,7 +87,7 @@
 	          />
 	        </td>
 	        <td><%= gioco.getDescription() %></td>
-	        <td><%= gioco.getPrice() %>€</td>
+	        <td><%= String.format("%.2f", gioco.getPrice()) %>€</td>
 	        <td>
 	          <form class="add-form" action="GiocoControl" method="get" novalidate>
 	            <input type="hidden" name="action" value="addC"/>
@@ -149,7 +149,7 @@
 	          />
 	        </td>
 	        <td><%= console.getDescription() %></td>
-	        <td><%= console.getPrice() %>€</td>
+	        <td><%= String.format("%.2f", console.getPrice()) %>€</td>
 	        <td>
 	          <form
 	            class="add-form"
@@ -216,7 +216,7 @@
 	          />
 	        </td>
 	        <td><%= accessorio.getDescription() %></td>
-	        <td><%= accessorio.getPrice() %>€</td>
+	        <td><%= String.format("%.2f", accessorio.getPrice()) %>€</td>
 	        <td>
 	          <form
 	            class="add-form"

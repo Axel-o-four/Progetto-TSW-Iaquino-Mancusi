@@ -13,10 +13,6 @@
 
     <p>Non hai i permessi necessari per visualizzare questa risorsa.</p>
 
-    <p>URL richiesto: 
-      <strong><%= request.getAttribute("javax.servlet.error.request_uri") %></strong>
-    </p>
-
     <p>
       Se ritieni che sia un errore, contatta l’amministratore di sistema.  
       Torna alla <a href="<%= request.getContextPath() %>/CatalogView.jsp">home page</a>.

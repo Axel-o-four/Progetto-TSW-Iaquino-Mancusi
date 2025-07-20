@@ -47,7 +47,7 @@
                style="max-height:200px; max-width:200px;">
         </td>
         <td><%= console.getBrand() %></td>
-        <td><%= console.getPrice() %>€</td>
+        <td><%= String.format("%.2f", console.getPrice()) %>€</td>
         <td><%= console.getReleaseYear() %></td>
         <td><%= console.getSupport() %></td>
         <td><%= console.isRetroCompatibility() ? "Sì" : "No" %></td>

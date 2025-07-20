@@ -48,10 +48,10 @@
                 <td><%= ordine.getEmailUtente() %></td>
                 <td><%= ordine.getDataOrdine() %></td>
                 <td><%= ordine.getQuantita() %></td>
-                <td><%= ordine.getImporto() %>€</td>
-                <td><%= ordine.getIva() %></td>
-                <td><%= ordine.getTotaleIva() %>€</td>
-                <td><%= ordine.getTotaleFattura() %>€</td>
+                <td><%= String.format("%.2f", ordine.getImporto()) %>€</td>
+                <td><%= String.format("%.2f", ordine.getIva()) %></td>
+                <td><%= String.format("%.2f", ordine.getTotaleIva()) %>€</td>
+                <td><%= String.format("%.2f", ordine.getTotaleFattura()) %>€</td>
                 <td>
                     <%= ordine.getVia() %>, Nº <%= ordine.getNumeroCivico() %><br/>
                     <%= ordine.getCap() %>, <%= ordine.getCitta() %> (<%= ordine.getProvincia() %>)<br/>

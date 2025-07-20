@@ -46,7 +46,7 @@
                      style="max-height:200px; max-width:200px;">
             </td>
             <td><%= gioco.getBrand() %></td>
-            <td><%= gioco.getPrice() %>€</td>
+            <td><%= String.format("%.2f", gioco.getPrice()) %>€</td>
             <td><%= gioco.getReleaseYear() %></td>
             <td><%= gioco.getGenre() %></td>
             <td><%= gioco.getPegi() %></td>

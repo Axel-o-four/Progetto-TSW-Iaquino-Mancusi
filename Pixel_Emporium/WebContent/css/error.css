@@ -17,7 +17,7 @@ h1{
 	color: Crimson;
 	box-shadow: 0px 0px 10px White;
 	padding: 0.5em;
-	background-color: rgba(75, 0, 130, 0.5);
+	background-color: rgb(75, 0, 130);
 	border-style: hidden;
 	border-radius: 0.2em;
 }

@@ -80,7 +80,7 @@
            step="0.01"
            min="0"
            placeholder="Es. 19.99"
-           value="<%= edit ? a.getPrice() : "" %>"/>
+           value="<%= edit ? String.format("%.2f", a.getPrice()).replace(",", ".") : "" %>"/>
     <span id="priceError" class="error"></span><br><br>
 
     <label for="accessoryType">Tipo Accessorio:</label><br>

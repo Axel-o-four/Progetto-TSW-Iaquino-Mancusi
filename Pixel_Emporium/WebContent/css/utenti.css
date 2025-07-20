@@ -66,24 +66,62 @@ h1{
 	width: 100%;
 }
 
-table{
-	border: 5px solid DeepPink;
-	border-collapse: collapse;
-	box-shadow: 0px 0px 15px White;
-	background-color: DarkSlateBlue;
+table {
+	border-collapse: separate;
+	border-spacing: 0 0.5em;
+	width: 100%;
+	background-color: transparent;
+	border: none;
 }
 
-table th{
-	border: 3px solid DeepPink;
+table th {
 	background-color: DarkViolet;
 	font-style: italic;
 	font-weight: bold;
 	text-align: center;
+	color: White;
+	box-shadow: 0px 0px 15px White;
+	border: solid Lavender 2px;
+	padding: 1em;
 }
 
-table td{
-	border: 3px solid DeepPink;
+table td {
 	background-color: DarkOrchid;
 	font-weight: bold;
 	text-align: center;
+	color: White;
+	border: none;
+	box-shadow: 0px 0px 15px White;
+	border: solid Lavender 1px;
+	padding: 1em;
+}
+
+table tr:first-child th:first-child {
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+
+table tr:first-child th:last-child {
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+table tr:last-child td:first-child {
+	border-bottom-left-radius: 12px;
+}
+
+table tr:last-child td:last-child {
+	border-bottom-right-radius: 12px;
+}
+
+table tbody tr:nth-child(2) td:first-child {
+	border-top-left-radius: 12px;
+}
+
+table tbody tr:nth-child(2) td:last-child {
+	border-top-right-radius: 12px;
+}
+
+table a{
+	color: White;
 }

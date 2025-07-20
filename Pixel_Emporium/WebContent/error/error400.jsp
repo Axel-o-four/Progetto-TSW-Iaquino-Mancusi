@@ -11,7 +11,6 @@
   <div class="container">
     <h1>Errore 400 – Richiesta non valida</h1>
     <p>La tua richiesta non è valida o è malformata. Controlla i parametri e riprova.</p>
-    <p>URL richiesto: <strong><%= request.getAttribute("javax.servlet.error.request_uri") %></strong></p>
     <p>Torna alla <a href="<%= request.getContextPath() %>/CatalogView.jsp">home page</a>.</p>
   </div>
 </body>

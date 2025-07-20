@@ -81,7 +81,7 @@
            step="0.01"
            min="0"
            placeholder="Formato 0.00"
-           value="<%= isEdit ? c.getPrice() : "" %>"/>
+           value="<%= isEdit ? String.format("%.2f", c.getPrice()).replace(",", ".") : "" %>"/>
     <span id="priceError" class="error"></span><br><br>
 
     <label for="releaseYear">Anno di rilascio:</label><br>

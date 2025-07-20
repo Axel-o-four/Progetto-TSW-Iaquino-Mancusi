@@ -182,4 +182,15 @@ public class UserModelDM implements UserModel {
             }
         }
     }
+    
+    public synchronized boolean emailExists(String email) throws SQLException {
+        String sql = "SELECT 1 FROM " + TABLE_NAME + " WHERE EMAIL = ? LIMIT 1";
+        try (Connection conn = DriverManagerConnectionPool.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
 }

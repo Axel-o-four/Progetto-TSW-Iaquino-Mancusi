@@ -11,7 +11,6 @@
   <div class="container">
     <h1>Errore 404 – Pagina non trovata</h1>
     <p>La pagina che stai cercando non esiste o è stata rimossa.</p>
-    <p>URL richiesto: <strong><%= request.getAttribute("javax.servlet.error.request_uri") %></strong></p>
     <p>Prova a cercare nella <a href="<%= request.getContextPath() %>/CatalogView.jsp">home page</a>.</p>
   </div>
 </body>

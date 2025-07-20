@@ -50,7 +50,7 @@
             <tr>
                 <td><%= dettaglio.getNome() %></td>
                 <td><%= dettaglio.getQuantita() %></td>
-                <td><%= dettaglio.getPrezzoUnitario() %>€</td>
+                <td><%= String.format("%.2f", dettaglio.getPrezzoUnitario()) %>€</td>
                 <td><img src="<%= dettaglio.getImmagine() %>" alt="Immagine prodotto" width="100"/></td>
                 <td><%= dettaglio.getDescrizione() %></td>
             </tr>

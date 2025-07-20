@@ -12,7 +12,6 @@
     <h1>Errore 401 – Accesso negato</h1>
     <p>Devi essere autenticato per accedere a questa risorsa.</p>
     <p><a href="<%= request.getContextPath() %>/login.jsp">Vai al login</a></p>
-    <p>URL richiesto: <strong><%= request.getAttribute("javax.servlet.error.request_uri") %></strong></p>
   </div>
 </body>
 </html>

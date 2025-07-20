@@ -90,7 +90,7 @@
       step="0.01"
       min="0"
       placeholder="Formato 0.00"
-      value="<%= isEdit ? gioco.getPrice() : "" %>"
+      value='<%= isEdit ? String.format("%.2f", gioco.getPrice()).replace(",", ".") : "" %>'
     />
     <span id="priceError" class="error"></span><br><br>
 

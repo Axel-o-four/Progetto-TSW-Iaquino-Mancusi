@@ -11,7 +11,6 @@
   <div class="container">
     <h1>Errore 402 – Pagamento richiesto</h1>
     <p>Questa risorsa richiede un pagamento. Contatta l’amministratore per maggiori informazioni.</p>
-    <p>URL richiesto: <strong><%= request.getAttribute("javax.servlet.error.request_uri") %></strong></p>
     <p>Torna alla <a href="<%= request.getContextPath() %>/CatalogView.jsp">home page</a>.</p>
   </div>
 </body>

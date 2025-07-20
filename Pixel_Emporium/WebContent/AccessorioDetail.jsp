@@ -44,7 +44,7 @@
                      style="max-height:200px; max-width:200px;">
             </td>
             <td><%= accessorio.getBrand() %></td>
-            <td><%= accessorio.getPrice() %>€</td>
+            <td><%= String.format("%.2f", accessorio.getPrice()) %>€</td>
             <td><%= accessorio.getAccessoryType() %></td>
             <td><%= accessorio.getQuantity() %></td>
         </tr>

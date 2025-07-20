@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import it.unisa.Model.UserBean;
 import it.unisa.Model.AccessorioBean;
 import it.unisa.Model.AccessorioModel;
@@ -55,6 +56,25 @@ public class OrdineControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+    	String fromParam = request.getParameter("from");
+    	String toParam   = request.getParameter("to");
+
+    	Date fromDate = null;
+    	Date toDate   = null;
+
+    	try {
+    	    if (fromParam != null && !fromParam.isEmpty()) {
+    	        LocalDate ldFrom = LocalDate.parse(fromParam);
+    	        fromDate = Date.valueOf(ldFrom);
+    	    }
+    	    if (toParam != null && !toParam.isEmpty()) {
+    	        LocalDate ldTo = LocalDate.parse(toParam);
+    	        toDate = Date.valueOf(ldTo);
+    	    }
+    	} catch (DateTimeParseException e) {
+    	    request.setAttribute("dateError", "Formato data non valido (yyyy-MM-dd)");
+    	}
+
     	HttpSession session = request.getSession();
     	UserBean user = (UserBean) session.getAttribute("user");
     	if (user == null) {
@@ -72,7 +92,14 @@ public class OrdineControl extends HttpServlet {
         String action = request.getParameter("action");
         try {
             if (action != null) {
+
                 if (action.equalsIgnoreCase("insert")) {
+                	if (cart == null || cart.getTotalQuantity() == 0) {
+                        request.setAttribute("msgErrore", "Il carrello è vuoto. Aggiungi almeno un articolo.");
+                        RequestDispatcher rd = request.getRequestDispatcher("/CartView.jsp");
+                        rd.forward(request, response);
+                        return;
+                    }
                     String paese = request.getParameter("paese");
                     String citta = request.getParameter("citta");
                     String cap = request.getParameter("cap");
@@ -170,8 +197,6 @@ public class OrdineControl extends HttpServlet {
                     cart.clear();
                     session.setAttribute("cart", cart);
                     
-                    
-                    
                 } else if (action.equalsIgnoreCase("delete")) {
                     int id = Integer.parseInt(request.getParameter("id"));
                     model.doDelete(id, emailUtente);
@@ -200,8 +225,14 @@ public class OrdineControl extends HttpServlet {
         }
 
         try {
-            Collection<OrdineBean> ordini = model.doRetrieveByUser(emailUtente);
-            request.setAttribute("ordini", ordini);
+        	Collection<OrdineBean> ordini;
+        	if (fromDate != null || toDate != null) {
+        	    ordini = model.doRetrieveByUserAndPeriod(emailUtente, fromDate, toDate);
+        	} else {
+        	    ordini = model.doRetrieveByUser(emailUtente);
+        	}
+        	request.setAttribute("ordini", ordini);
+
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }

@@ -107,7 +107,7 @@
 
     <hr/>
     <p>Totale articoli: <%= cart.getTotalQuantity() %></p>
-    <p>Totale prezzo: <%= cart.getTotalPrice() %>€</p>
+    <p>Totale prezzo: <%= String.format("%.2f", cart.getTotalPrice()) %>€</p>
 
     <form action="Checkout.jsp" method="get">
       <input type="submit" value="Procedi al checkout">

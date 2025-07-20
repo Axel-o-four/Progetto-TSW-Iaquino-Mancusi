@@ -2,6 +2,14 @@
 <%@ page import="it.unisa.Model.Cart,it.unisa.Model.UserBean" %>
 
 <%
+    Cart c = (Cart) session.getAttribute("cart");
+    if (c == null || c.getTotalQuantity() == 0) {
+        response.sendRedirect("CartView.jsp");
+        return;
+    }
+%>
+
+<%
     Cart cart = (Cart) session.getAttribute("cart");
     if (cart == null) {
         cart = new Cart();

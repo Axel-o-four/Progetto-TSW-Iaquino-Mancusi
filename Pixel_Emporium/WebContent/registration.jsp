@@ -83,107 +83,141 @@
    <a href="login.jsp" id="login">Sei già registrato? Vai al login</a>
 
    <script>
-   document.addEventListener('DOMContentLoaded', function() {
-     var form       = document.getElementById('registerForm');
-     var email      = document.getElementById('email');
-     var nome       = document.getElementById('nome');
-     var cognome    = document.getElementById('cognome');
-     var dataNasc   = document.getElementById('dataNascita');
-     var genereEls  = document.getElementsByName('genere');
-     var indirizzo  = document.getElementById('indirizzo');
-     var citta      = document.getElementById('citta');
-     var prov       = document.getElementById('prov');
-     var cap        = document.getElementById('cap');
-     var password   = document.getElementById('password');
-
-     function setError(el, msg) {
-       document.getElementById(el.id + 'Error').textContent = msg;
-       el.focus();
-     }
-     function clearError(el) {
-       document.getElementById(el.id + 'Error').textContent = '';
-     }
-
-     [email,nome,cognome,dataNasc,indirizzo,citta,prov,cap,password]
-       .forEach(function(i){ 
-         i.addEventListener('input', function(){ clearError(i); });
-       });
-
-     form.addEventListener('submit', function(e) {
-       if (!email.checkValidity()) {
-         e.preventDefault();
-         setError(email, 'Email non valida');
-         return;
-       }
-       clearError(email);
-
-       if (!/^[A-Za-z]+$/.test(nome.value.trim())) {
-         e.preventDefault();
-         setError(nome, 'Solo lettere');
-         return;
-       }
-       clearError(nome);
-
-       if (!/^[A-Za-z]+$/.test(cognome.value.trim())) {
-         e.preventDefault();
-         setError(cognome, 'Solo lettere');
-         return;
-       }
-       clearError(cognome);
-
-       var today = new Date().toISOString().slice(0,10);
-       if (!/^\d{4}-\d{2}-\d{2}$/.test(dataNasc.value) 
-           || dataNasc.value > today) {
-         e.preventDefault();
-         setError(dataNasc, 'Data non valida');
-         return;
-       }
-       clearError(dataNasc);
-
-       var chosen = Array.prototype.find.call(genereEls, function(r){ return r.checked; });
-       if (!chosen) {
-         e.preventDefault();
-         document.getElementById('genereError').textContent = 'Seleziona genere';
-         return;
-       }
-       document.getElementById('genereError').textContent = '';
-
-       if (indirizzo.value.trim() === '') {
-         e.preventDefault();
-         setError(indirizzo, 'Obbligatorio');
-         return;
-       }
-       clearError(indirizzo);
-
-       if (!/^[A-Za-z ]+$/.test(citta.value.trim())) {
-         e.preventDefault();
-         setError(citta, 'Solo lettere');
-         return;
-       }
-       clearError(citta);
-
-       if (!/^[A-Z]{2}$/.test(prov.value.trim())) {
-         e.preventDefault();
-         setError(prov, '2 lettere maiuscole');
-         return;
-       }
-       clearError(prov);
-
-       if (!/^\d{5}$/.test(cap.value.trim())) {
-         e.preventDefault();
-         setError(cap, '5 cifre');
-         return;
-       }
-       clearError(cap);
-
-       if (!/^(?=.*\d)(?=.*[A-Za-z]).{6,}$/.test(password.value)) {
-         e.preventDefault();
-         setError(password, 'Min 6 caratteri e 1 cifra');
-         return;
-       }
-       clearError(password);
-     });
-   });
+	document.addEventListener('DOMContentLoaded', function() {
+	  var form        = document.getElementById('registerForm');
+	  var emailField  = document.getElementById('email');
+	  var emailError  = document.getElementById('emailError');
+	  var nome        = document.getElementById('nome');
+	  var cognome     = document.getElementById('cognome');
+	  var dataNasc    = document.getElementById('dataNascita');
+	  var genereEls   = document.getElementsByName('genere');
+	  var indirizzo   = document.getElementById('indirizzo');
+	  var citta       = document.getElementById('citta');
+	  var prov        = document.getElementById('prov');
+	  var cap         = document.getElementById('cap');
+	  var password    = document.getElementById('password');
+	
+	  var emailExistsFlag = false;
+	  var debounceTimer;
+	
+	  function setError(el, msg) {
+	    var err = document.getElementById(el.id + 'Error');
+	    err.textContent = msg;
+	    err.style.color = 'red';
+	    el.focus();
+	  }
+	
+	  function clearError(el) {
+	    var err = document.getElementById(el.id + 'Error');
+	    err.textContent = '';
+	  }
+	
+	  // Pulisci errori sui campi man mano che l’utente scrive
+	  [emailField, nome, cognome, dataNasc, indirizzo, citta, prov, cap, password]
+	    .forEach(function(i){
+	      i.addEventListener('input', function(){
+	        clearError(i);
+	      });
+	    });
+	
+	  // AJAX + debounce per controllare l’email
+	  emailField.addEventListener('input', function() {
+	    clearTimeout(debounceTimer);
+	    clearError(emailField);
+	    emailExistsFlag = false;
+	
+	    if (!emailField.checkValidity()) return;
+	
+	    debounceTimer = setTimeout(function() {
+	      fetch('<%= request.getContextPath() %>/CheckEmail?email='
+	            + encodeURIComponent(emailField.value.trim()))
+	        .then(function(res){ return res.json(); })
+	        .then(function(data){
+	          emailExistsFlag = data.exists;
+	          if (data.exists) {
+	            setError(emailField, 'Email già registrata');
+	          }
+	        })
+	        .catch(function(err){
+	          console.error('Errore verifica email:', err);
+	        });
+	    }, 400);
+	  });
+	
+	  // Validazioni e blocco submit
+	  form.addEventListener('submit', function(e) {
+	
+	    // 1) blocca subito se ajax ha già segnato email duplicata
+	    if (emailExistsFlag) {
+	      e.preventDefault();
+	      return;
+	    }
+	
+	    // 2) validazioni esistenti
+	    if (!emailField.checkValidity()) {
+	      e.preventDefault();
+	      setError(emailField, 'Email non valida');
+	      return;
+	    }
+	
+	    if (!/^[A-Za-z]+$/.test(nome.value.trim())) {
+	      e.preventDefault();
+	      setError(nome, 'Solo lettere');
+	      return;
+	    }
+	
+	    if (!/^[A-Za-z]+$/.test(cognome.value.trim())) {
+	      e.preventDefault();
+	      setError(cognome, 'Solo lettere');
+	      return;
+	    }
+	
+	    var today = new Date().toISOString().slice(0,10);
+	    if (!/^\d{4}-\d{2}-\d{2}$/.test(dataNasc.value)
+	        || dataNasc.value > today) {
+	      e.preventDefault();
+	      setError(dataNasc, 'Data non valida');
+	      return;
+	    }
+	
+	    var chosen = Array.prototype.find.call(genereEls, function(r){ return r.checked; });
+	    if (!chosen) {
+	      e.preventDefault();
+	      document.getElementById('genereError').textContent = 'Seleziona genere';
+	      return;
+	    }
+	
+	    if (indirizzo.value.trim() === '') {
+	      e.preventDefault();
+	      setError(indirizzo, 'Obbligatorio');
+	      return;
+	    }
+	
+	    if (!/^[A-Za-z ]+$/.test(citta.value.trim())) {
+	      e.preventDefault();
+	      setError(citta, 'Solo lettere');
+	      return;
+	    }
+	
+	    if (!/^[A-Z]{2}$/.test(prov.value.trim())) {
+	      e.preventDefault();
+	      setError(prov, '2 lettere maiuscole');
+	      return;
+	    }
+	
+	    if (!/^\d{5}$/.test(cap.value.trim())) {
+	      e.preventDefault();
+	      setError(cap, '5 cifre');
+	      return;
+	    }
+	
+	    if (!/^(?=.*\d)(?=.*[A-Za-z]).{6,}$/.test(password.value)) {
+	      e.preventDefault();
+	      setError(password, 'Min 6 caratteri e 1 cifra');
+	      return;
+	    }
+	  });
+	});
    </script>
    </div>
    </div>

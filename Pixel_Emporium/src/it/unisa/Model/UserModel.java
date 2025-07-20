@@ -13,4 +13,6 @@ public interface UserModel {
     public Collection<UserBean> doRetrieveAll(String order) throws SQLException;
     
     public boolean updateUser(UserBean user) throws SQLException;
+    
+    public boolean emailExists(String email) throws SQLException;
 }
